@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ first_name }}_resume</title>
+
+    <style>
+        .resume_page {
+            background-color: rgb(250, 255, 255);
+            padding: 0.3in;
+            width: 8.5in;
+            height: 11.75in;
+            margin: auto;
+            word-wrap: break-word;
+            margin-top: 20px;
+        }
+
+        body {
+            height: 11.75in;
+        }
+
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 0;
+            }
+
+            body {
+                -webkit-print-color-adjust: exact;
+            }
+        }
+
+        .header {
+            font-size: 28px;
+            font-weight: bold;
+            text-align: left;
+            alignment: left;
+            color: white;
+            background-image: linear-gradient(109.6deg, rgba(62, 161, 219, 1) 11.2%, rgba(93, 52, 236, 1) 100.2%);
+        }
+
+        .data {
+            width: 95px;
+            padding-bottom: 10px;
+
+        }
+
+        .button {
+            text-align: center;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-size: 20px;
+            letter-spacing: 4px;
+            position: relative;
+            background-color: #16a085;
+            border: none;
+            color: #fff;
+            padding: 20px;
+            width: 500px;
+            display: block;
+            transition-duration: 0.4s;
+            overflow: hidden;
+            box-shadow: 0 5px 15px #193047;
+            border-radius: 4px;
+        }
+
+        .button:hover {
+            background: #fff;
+            box-shadow: 0px 2px 10px 5px #1abc9c;
+            color: #000;
+        }
+
+        .button:after {
+            content: "";
+            background: #1abc9c;
+            display: block;
+            position: absolute;
+            padding-top: 300%;
+            padding-left: 350%;
+            margin-left: -20px !important;
+            margin-top: -120%;
+            opacity: 0;
+            transition: all 0.8s
+        }
+
+        .button:active:after {
+            padding: 0;
+            margin: 0;
+            opacity: 1;
+            transition: 0s
+        }
+
+        .button:focus {
+            outline: 0;
+        }
+    </style>
+</head>
+<body style="background-color: lightgray;">
+<div align="center">
+    <button id="download" onclick="printPDF()" class="button">Download PDF</button>
+    <button id="download2" onclick="exportHTML()" class="button">Download document</button>
+</div>
+<div class="resume_page" id="resume">
+    <div style="margin-top: -40px">
+        <div>
+            <p style="font-size: 50px;font-weight: bolder;padding: 0;font-family: 'Yu Gothic'">{{ first_name }} {{ last_name }}</p>
+            <p style="margin-top: -50px;font-size: 30px;">{{ desg }}</p>
+            <p style="">Email: {{ email }}<br>
+                Mobile: {{ mobile }}<br>
+                Portfolio: {{ portfolio }}
+            </p>
+        </div>
+        <hr color="#3875d7">
+        <!-- for summary-->
+        <div style="text-align: left;margin-top: 30px;">
+            <p class="header">Summary</p>
+            {{ summary }}
+        </div>
+
+        <!--for career details-->
+        <div style="text-align: left">
+            <p class="header">About Career</p>
+            <table cellspacing="20px" style="margin-top: -25px">
+                <tr>
+                    <td class="data" style="font-weight: bold">{{ designation1 }}</td>
+                    <td rowspan="2" style="vertical-align: top;">
+                        {{ experience1 }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="data">{{ company1 }}</td>
+                </tr>
+                {% if no_of_firms == 2 %}
+
+                    <tr>
+                        <td class="data" style="font-weight: bold">{{ designation2 }}</td>
+                        <td rowspan="2" style="vertical-align: top;">
+                            {{ experience2 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="data">{{ company2 }}</td>
+                    </tr>
+
+                {% endif %}
+            </table>
+        </div>
+
+        <!--for education details-->
+        <div style="margin-top: -30px;text-align: left;height: fit-content">
+            <p class="header">Education Details</p>
+            <table cellspacing="20px" style="margin-top: -25px">
+                <tr>
+                    <td class="data" style="font-weight: bold">{{ degree1 }}</td>
+                    <td rowspan="2" style="vertical-align: top;">
+                        {{ achievements1 }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="data">{{ institute1 }}</td>
+                </tr>
+
+                {% if no_of_deg == 2 %}
+                    <tr>
+                        <td class="data" style="font-weight: bold">{{ degree2 }}</td>
+                        <td rowspan="2" style="vertical-align: top;">
+                            {{ achievements2 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="data">{{ institute2 }}</td>
+                    </tr>
+                {% endif %}
+            </table>
+        </div>
+
+        <div style="margin-top:-30px;text-align: left;height: fit-content">
+            <div style="text-align: left;" align="left">
+                <p class="header">Skills</p><br>
+                <table style="margin-top: -35px;line-height: 1px;" cellspacing="20px" align="left">
+                    <tr>
+                        <td><b>{{ field_skill1 }}</b></td>
+                    </tr>
+                    {% for i in skills1 %}
+                        <tr>
+                            <td>{{ i }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+
+                {% if no_of_skills == 2 %}
+                    <table style="margin-top: -35px;line-height: 1px;margin-left: 20px" cellspacing="20px">
+                        <tr>
+                            <td><b>{{ field_skill2 }}</b></td>
+                        </tr>
+                        {% for i in skills2 %}
+                            <tr>
+                                <td>{{ i }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script type="text/javascript">
+    function printPDF() {
+        document.getElementById('download').style.display = "None";
+        window.print();
+        document.getElementById('download').style.display = "Block";
+    }
+
+    function exportHTML() {
+        var header = "<html xmlns:o='urn:schemas-microsoft-com:office:office' " +
+            "xmlns:w='urn:schemas-microsoft-com:office:word' " +
+            "xmlns='http://www.w3.org/TR/REC-html40'>" +
+            "<head><meta charset='utf-8'><title>Export HTML to Word Document with JavaScript</title></head><body>";
+        var footer = "</body></html>";
+        var sourceHTML = header + document.getElementById("resume").innerHTML + footer;
+
+        var source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(sourceHTML);
+        var fileDownload = document.createElement("a");
+        document.body.appendChild(fileDownload);
+        fileDownload.href = source;
+        fileDownload.download = "{{ first_name }}.doc";
+        fileDownload.click();
+        document.body.removeChild(fileDownload);
+    }
+</script>
+</html>

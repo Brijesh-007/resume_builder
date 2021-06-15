@@ -1,0 +1,123 @@
+{% extends 'form.html' %}
+{% load static %}
+{% block content %}
+    <style>
+        header {
+            font-size: 28px;
+            font-weight: bold;
+            height: fit-content;
+            background-color: white;
+            text-align: center;
+        }
+
+        .box1 {
+            background-image: url({% static 'design1.png' %});
+            background-size: cover;
+            position: relative;
+            background-color: black;
+            height: 350px;
+            width: 275px;
+            top: 0px;
+            border: black 3px solid;
+            margin: auto;
+            transition: transform 0.6s ease;
+            float: left;
+        }
+
+        .box1:hover {
+            transform: scale(1.1);
+            transform-style: flat;
+            transform-origin: right;
+            transition-delay: 0.2s;
+        }
+
+        .box2 {
+            background-image: url({% static 'design2.png' %});
+            background-size: cover;
+            position: relative;
+            height: 350px;
+            width: 275px;
+            margin-top: -507px;
+            border: black 3px solid;
+            transition: transform 0.8s ease;
+
+        }
+
+        .box2:hover {
+            transform: scale(1.1);
+            transform-style: flat;
+            transform-origin: left;
+            transition-delay: 0.2s;
+        }
+
+        .button {
+            text-align: center;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-size: 15px;
+            letter-spacing: 4px;
+            position: relative;
+            background-color: #16a085;
+            border: none;
+            color: #fff;
+            padding: 15px;
+            width: 200px;
+            transition-duration: 0.4s;
+            overflow: hidden;
+            box-shadow: 0 5px 15px #193047;
+            border-radius: 4px;
+        }
+
+        .button:hover {
+            background: #fff;
+            box-shadow: 0px 2px 10px 5px #1abc9c;
+            color: #000;
+        }
+
+        .button:after {
+            content: "";
+            background: #1abc9c;
+            display: block;
+            position: absolute;
+            padding-top: 300%;
+            padding-left: 350%;
+            margin-left: -20px !important;
+            margin-top: -120%;
+            opacity: 0;
+            transition: all 0.8s
+        }
+
+        .button:active:after {
+            padding: 0;
+            margin: 0;
+            opacity: 1;
+            transition: 0s
+        }
+
+        .button:focus {
+            outline: 0;
+        }
+    </style>
+    <body bgcolor="#d3d3d3">
+    <div class="progress" style="margin-bottom: 2rem">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+             aria-valuemin="0" aria-valuemax="100" style="width: 90%"></div>
+    </div>
+    <header>
+        <h1 class="text-center bg-secondary text-uppercase text-light">Select any one Template</h1>
+    </header>
+    <table style="position: relative;text-align: center" align="center" cellspacing="20">
+        <tr>
+            <td>
+                <button formaction="submit_details1" class="button">Select</button>
+            </td>
+            <td>
+                <button formaction="submit_details2" class="button">Select</button>
+            </td>
+        </tr>
+        <tr>
+            <td class="box1"></td>
+            <td class="box2"></td>
+        </tr>
+    </table>
+{% endblock %}

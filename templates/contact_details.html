@@ -1,0 +1,27 @@
+{% extends 'form.html' %}
+{% block content %}
+    <div class="progress" style="margin-bottom: 2rem">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+    </div>
+    <h1 class="text-center bg-secondary text-uppercase text-light">Contact Details</h1>
+
+    <div class="form-group">
+    <label for="mobile">Contact No.</label>
+    <input type="number" id="mobile" name="Mobile" placeholder="Enter Contact No." maxlength="10" minlength="10" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="Eg. abc@gmail.com" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+    <label for="portfolio">Portfolio Website</label>
+    <input type="url" id="portfolio" name="portfolio" placeholder="Portfolio Website" class="form-control" required>
+    </div>
+
+    <div align="center">
+        <button formaction="design_select" class="btn btn-primary">Submit</button>
+        <button type="reset" value="Reset" class="btn btn-danger">Reset</button>
+    </div>
+{% endblock %}

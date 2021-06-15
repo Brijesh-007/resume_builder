@@ -1,0 +1,34 @@
+{% extends 'form.html' %}
+{% block content %}
+    <div class="progress mb-2">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0"></div>
+    </div>
+    <h1 class="text-center bg-secondary text-uppercase text-light">Personal Details</h1>
+    <div class="form-group">
+        <label for="first_name">First Name</label>
+        <input type="text" required id="first_name" name="first_name" placeholder="First Name" maxlength="10" class="form-control">
+        <label>Last Name</label>
+        <input type="text" required id="last_name" name="last_name" placeholder="Last Name" maxlength="10" class="form-control">
+    </div>
+
+    <div class="form-group">
+    <label for="desg">Designation</label>
+    <input id="desg" type="text" required name="designation" placeholder="Designation" class="form-control">
+    </div>
+
+    <div class="form-group">
+    <label for="deg">Number of Degrees Completed</label>
+    <input type="number" id="deg" name="no_of_deg" required class="form-control" max="2">
+    <small class="form-text text-muted">Max value 2</small>
+    </div>
+
+    <div class="form-group">
+    <label for="firms">Number of firms you worked</label>
+    <input type="number" id="firms" name="no_of_firms" required class="form-control" max="2">
+    <small class="form-text text-muted">Max value 2</small>
+    </div>
+    <div align="center">
+    <button formaction="career_details" class="btn btn-primary">Next</button>
+    <button type="reset" value="Reset" class="btn btn-danger">Reset</button>
+    </div>
+{% endblock %}
